@@ -1,0 +1,15 @@
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+.header__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.header__text {
+    font-size: 36px;
+}
+.header__image {
+}
