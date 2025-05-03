@@ -1,11 +1,28 @@
 <div class="container">
   <section id="header">
-    <div class="header__info">
-      <div class="header__text">bailanysta</div>
-      <!-- <div class="header__image">
-        <img src="" alt="">
-      </div> -->
-    </div>
+    <a [routerLink]="['/']">
+      <div class="header__info">
+        <div class="header__text">bailanysta</div>
+        <!-- <div class="header__image">
+          <img src="" alt="">
+        </div> -->
+      </div>
+    </a>
+    
     
   </section>
 </div>
+
+<!-- <div class="near__block">
+  <section id="navigation">
+    <div class="nav__list">
+        <button class="btn btn__profile">Profile<img src="" alt=""></button>
+        <button class="btn__search">Search<img src="" alt=""></button>
+        <button class="btn btn__favs">Favorites<img src="" alt=""></button>
+        <button class="btn btn__logout">Log Out<img src="" alt=""></button>
+    </div>
+</section>
+</div> -->
+
+
+<router-outlet></router-outlet>

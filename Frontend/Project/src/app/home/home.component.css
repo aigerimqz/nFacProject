@@ -1,0 +1,23 @@
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+.btn{
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+
+}
+.btn__profile {
+
+}
+.btn__favs {
+}
+.btn__logout {
+}
