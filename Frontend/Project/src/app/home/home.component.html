@@ -1,7 +1,7 @@
 <div class="container">
     <section id="navigation">
         <div class="nav__list">
-            <button class="btn btn__profile">Profile<img src="" alt=""></button>
+            <button routerLink="/profile" class="btn btn__profile">Profile<img src="" alt=""></button>
             <!-- <button class="btn__search">Search<img src="" alt=""></button> -->
             <button class="btn btn__favs">Favorites<img src="" alt=""></button>
             <button class="btn btn__logout">Log Out<img src="" alt=""></button>
@@ -10,7 +10,9 @@
 
     <section id="posts">
         <div class="post__list">
-            
+
         </div>
     </section>
 </div>
+
+<router-outlet></router-outlet>
