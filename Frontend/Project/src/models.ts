@@ -10,3 +10,8 @@ export interface Post{
     text: string;
     image: string;
 }
+
+export interface Token{
+    refresh: string;
+    access: string;
+}
