@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from rest_framework import generics, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from .models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, UserSerializer
 
 
 class PostListView(generics.ListAPIView):
@@ -48,3 +49,12 @@ class DeletePostView(generics.DestroyAPIView):
         if instance.author != self.request.user:
             raise PermissionDenied("You can not delete post.")
         instance.delete()
+
+
+@permission_classes([IsAuthenticated])
+class UserProfileView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
