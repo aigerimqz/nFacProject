@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthComponent } from './auth/auth.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'login', component: AuthComponent},
     {path: 'profile', component: ProfileComponent}
 ];

@@ -1,1 +1,15 @@
-<p>auth works!</p>
+<div class="container">
+    <section id="login">
+        <div class="login__block">
+            <div class="login__text"></div>
+            <div class="login__form">
+                <form (ngSubmit)="onLogin()" action="" method="get">
+                    <input class="input__username" name="username" [(ngModel)]="userModel.username" required type="text" placeholder="username">
+                    <input class="input__password" name="password" [(ngModel)]="userModel.password" required type="password" placeholder="password">
+                    <button class="form__btn" type="submit">Login</button>
+                    <p *ngIf="errorMessage">{{errorMessage}}</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
