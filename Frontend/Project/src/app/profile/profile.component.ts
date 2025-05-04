@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ProfileComponent implements OnInit{
   profileData: any;
+  currentUsername: string = '';
 
   constructor(
     private userService: UserService,
@@ -23,6 +24,8 @@ export class ProfileComponent implements OnInit{
       this.userService.getProfile().subscribe({
         next: (data) => {
           this.profileData = data;
+          
+          
         },
         error: (err) => {
           console.error('Error on loading profile: ', err);
@@ -32,6 +35,10 @@ export class ProfileComponent implements OnInit{
 
   viewPostDetail(postId: number): void {
     this.router.navigate(['/posts', postId]);
+  }
+
+  viewUserDetail(username: string): void{
+    this.router.navigate(['/users', username]);
   }
 
 }

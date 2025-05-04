@@ -17,4 +17,8 @@ export class UserService {
   getUserById(id: number): Observable<any> {
     return this.client.get<any>(`http://127.0.0.1:8000/api/users/${id}/`);
   }
+  
+  getUserByUsername(username: string): Observable<any> {
+    return this.client.get<any>(`http://127.0.0.1:8000/api/users/${username}/`);
+  }
 }

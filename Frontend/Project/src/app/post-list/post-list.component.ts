@@ -41,6 +41,11 @@ export class PostListComponent implements OnInit{
       }
     })
   }
+
+  viewUserDetail(username: string): void {
+    this.router.navigate(['/users', username]);
+  }
+
   viewPostDetail(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }

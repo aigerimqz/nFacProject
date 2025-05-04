@@ -3,10 +3,13 @@
       Loading...
     </div>
   
-    <div (click)="viewPostDetail(post.id)" class="posts" *ngFor="let post of posts">
-        <h2>{{post.author.username}}</h2>
-        <img [src]="post.image" alt="">
-        <p>{{post.text}}</p>
+    <div class="posts" *ngFor="let post of posts">
+        <h2 (click)="viewUserDetail(post.author.username)">{{post.author.username}}</h2>
+        <div (click)="viewPostDetail(post.id)"  class="post__content">
+            <img [src]="post.image" alt="">
+            <p>{{post.text}}</p>
+        </div>
+        
 
     </div>
   

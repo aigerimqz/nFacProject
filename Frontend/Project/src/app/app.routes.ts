@@ -6,6 +6,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { RegisterComponent } from './register/register.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'create-post', component: CreatePostComponent},
     {path: 'posts/:id', component: PostDetailComponent},
-    {path: 'posts/:id/update', component: UpdatePostComponent}
+    {path: 'posts/:id/update', component: UpdatePostComponent},
+    {path: 'users/:username', component: UserDetailComponent}
 ];

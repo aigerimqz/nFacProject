@@ -94,6 +94,7 @@ class UserListView(generics.ListAPIView):
 class UserDetailView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer 
+    authentication_classes = []
     permission_classes = [permissions.AllowAny]
 
     lookup_field = 'username'
