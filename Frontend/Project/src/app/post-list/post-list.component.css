@@ -1,0 +1,43 @@
+.container {
+}
+.loading-spinner {
+}
+.post__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.post_block {
+    /* padding: 10px 0; */
+    margin: 50px 0;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+
+}
+.post__author{
+    border-radius: 20px;
+    
+}
+.post__author h2{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 300;
+}
+.post__content {
+    background-color: white;
+}
+.post__image img{
+    width: 560px;
+    height: 360px;
+    background-color: white;
+
+}
+.post__info p{
+    background-color: white;
+}
+.no-posts {
+}
