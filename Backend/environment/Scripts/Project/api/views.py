@@ -18,6 +18,7 @@ class RegisterView(generics.CreateAPIView):
 class PostListView(generics.ListAPIView):
    
     serializer_class = PostSerializer
+    authentication_classes = []
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -25,6 +26,8 @@ class PostListView(generics.ListAPIView):
         if self.request.user.is_authenticated:
             queryset = queryset.exclude(author=self.request.user)
         return queryset
+
+
     
 
 

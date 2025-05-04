@@ -9,6 +9,7 @@ export interface Post{
     id: number;
     text: string;
     image: string;
+    author: User;
 }
 
 export interface Token{

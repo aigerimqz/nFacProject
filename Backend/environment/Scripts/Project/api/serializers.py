@@ -3,18 +3,22 @@ from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
-class PostSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(use_url=True, required=False)
-    class Meta:
-        model = Post
-        fields = "__all__"
-        read_only_fields = ('author',)
-
 class UserSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True)
+    # posts = PostSerializer(many=True)
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'username', 'email', 'posts']
+
+
+class PostSerializer(serializers.ModelSerializer):
+    author = UserSerializer(read_only=True)
+    image = serializers.ImageField(use_url=True, required=False)
+    
+    class Meta:
+        model = Post
+        fields = "__all__"
+        read_only_fields = ['author']
+
 
 
 class RegisterSerializer(serializers.ModelSerializer):

@@ -13,4 +13,8 @@ export class UserService {
   getProfile(): Observable<any> {
     return this.client.get<any>(this.profileUrl);
   }
+
+  getUserById(id: number): Observable<any> {
+    return this.client.get<any>(`http://127.0.0.1:8000/api/users/${id}/`);
+  }
 }
