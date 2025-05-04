@@ -16,9 +16,16 @@ class RegisterView(generics.CreateAPIView):
 
 
 class PostListView(generics.ListAPIView):
-    queryset = Post.objects.all().order_by('-created_at')
+   
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        queryset = Post.objects.all().order_by('-created_at')
+        if self.request.user.is_authenticated:
+            queryset = queryset.exclude(author=self.request.user)
+        return queryset
+    
 
 
 
@@ -73,8 +80,12 @@ class UserProfileView(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
     
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny]
 
-    
+
     
 class UserDetailView(generics.RetrieveAPIView):
     queryset = User.objects.all()
