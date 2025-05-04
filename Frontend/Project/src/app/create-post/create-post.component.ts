@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../services/post.service';
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-create-post',
@@ -19,7 +21,8 @@ export class CreatePostComponent {
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private router: Router
+    private router: Router, 
+    private authService: AuthService
   ) {
     this.postForm = this.fb.group({
       text: [''],
@@ -44,6 +47,8 @@ export class CreatePostComponent {
     const formData = new FormData();
     formData.append('text', this.postForm.get('text')?.value);
     
+
+
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
     }
