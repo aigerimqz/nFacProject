@@ -1,28 +1,36 @@
-<div class="container">
-  <section id="header">
-    <a [routerLink]="['/']">
-      <div class="header__info">
-        <div class="header__text">bailanysta</div>
-        <!-- <div class="header__image">
-          <img src="" alt="">
-        </div> -->
+<div class="outer-container">
+  <div class="menu">
+    <section id="navigation">
+      <div class="nav__list">
+          
+          <div class="btns__nav">
+            <button routerLink="/home" class="btn btn__home"><img src="icons/home.png" alt=""></button>
+            <button routerLink="/profile" class="btn btn__profile"><img src="icons/profile.png" alt=""></button>
+            <button class="btn btn__favs"><img src="icons/fav.png" alt=""></button>
+          </div>
+          <div class="btns__login">
+            <button routerLink="/login" class="btn btn__logout"><img src="icons/login.png" alt=""></button>
+          </div>
+          
       </div>
-    </a>
-    
-    
-  </section>
+    </section>
+  
+  </div>
+  <div class="container">
+    <section id="header">
+      <a [routerLink]="['/']">
+        <div class="header__info">
+          <div class="header__text">bailanysta</div>
+          
+        </div>
+      </a>
+      
+      
+    </section>
+  </div>
+  
 </div>
 
-<!-- <div class="near__block">
-  <section id="navigation">
-    <div class="nav__list">
-        <button class="btn btn__profile">Profile<img src="" alt=""></button>
-        <button class="btn__search">Search<img src="" alt=""></button>
-        <button class="btn btn__favs">Favorites<img src="" alt=""></button>
-        <button class="btn btn__logout">Log Out<img src="" alt=""></button>
-    </div>
-</section>
-</div> -->
 
 
 <router-outlet></router-outlet>

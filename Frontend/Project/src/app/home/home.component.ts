@@ -5,7 +5,7 @@ import { PostListComponent } from '../post-list/post-list.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, PostListComponent],
+  imports: [RouterOutlet, PostListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
