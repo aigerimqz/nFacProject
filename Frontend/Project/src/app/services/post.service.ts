@@ -9,18 +9,22 @@ import { Post } from '../../models';
 export class PostService {
   private apiUrl = 'http://127.0.0.1:8000/api/posts/';  
 
-  constructor(private http: HttpClient) { }
+  constructor(private client: HttpClient) { }
 
   getPost(id: number): Observable<Post>{
-    return this.http.get<Post>(`${this.apiUrl}${id}/`);
+    return this.client.get<Post>(`${this.apiUrl}${id}/`);
   }
 
   createPost(formData: FormData): Observable<any> {
     
-    return this.http.post(`${this.apiUrl}create/`, formData);
+    return this.client.post(`${this.apiUrl}create/`, formData);
   }
 
   updatePost(id: number, postData: FormData): Observable<Post> {
-    return this.http.put<Post>(`${this.apiUrl}${id}/update/`, postData);
+    return this.client.put<Post>(`${this.apiUrl}${id}/update/`, postData);
+  }
+
+  deletePost(id: number): Observable<any>{
+    return this.client.delete(`${this.apiUrl}${id}/delete/`);
   }
 }

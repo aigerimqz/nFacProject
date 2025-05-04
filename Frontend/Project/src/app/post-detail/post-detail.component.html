@@ -15,6 +15,7 @@
         <img *ngIf="post.image" [src]="post.image" alt="Post image" class="post-image">
       </div>
       <button (click)="updatePost()">Edit post</button>
+      <button (click)="deletePost()" >Delete post</button>
       <button routerLink="/profile" class="back-button">Back to All Posts</button>
     </div>
   </div>

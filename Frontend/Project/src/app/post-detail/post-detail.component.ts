@@ -53,4 +53,21 @@ export class PostDetailComponent implements OnInit{
     this.router.navigate(['/posts', this.post.id, 'update']);
   }
 
+  deletePost(): void {
+    if(confirm('Are you sure to delete this post?')){
+      this.isLoading = true;
+      this.postService.deletePost(this.post.id).subscribe({
+        next: () => {
+          this.router.navigate(['/profile']);
+          alert('Post deleted')
+        },
+        error: (err) => {
+          console.log('Error deleting post: ', err);
+          alert('Failed to delete post');
+          this.isLoading = false;
+        }
+      })
+    }
+  }
+
 }
