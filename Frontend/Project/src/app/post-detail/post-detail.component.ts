@@ -3,6 +3,7 @@ import { Post } from '../../models';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -14,17 +15,25 @@ import { CommonModule } from '@angular/common';
 export class PostDetailComponent implements OnInit{
 
   post!: Post;
+  currentUser: any;
   isLoading = true;
   error = '';
 
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
+    private authService: AuthService,
     private router: Router
   ){}
 
   ngOnInit(): void {
       this.getPost();
+      this.currentUser = this.authService.getCurrentUser();
+      
+  }
+
+  isAuthor(): boolean{
+    return this.post && this.post.author.id === this.currentUser.id;
   }
 
   getPost(): void{

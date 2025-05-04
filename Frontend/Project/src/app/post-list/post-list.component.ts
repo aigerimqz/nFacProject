@@ -4,6 +4,7 @@ import { PostService } from '../services/post.service';
 import { CommonModule } from '@angular/common';
 import { PostDetailComponent } from '../post-detail/post-detail.component';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
@@ -19,7 +20,8 @@ export class PostListComponent implements OnInit{
 
   constructor(
     private postService: PostService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -30,11 +32,7 @@ export class PostListComponent implements OnInit{
     this.postService.getPosts().subscribe({
       next: (posts) => {
         this.posts = posts;
-        // this.posts.forEach(post => {
-        //   this.userService.getUserById(post.author.id).subscribe(user => {
-        //     post.author = user.username;
-        //   });
-        // })
+      
         this.isLoading = false;
       },
       error : (err) => {
@@ -42,6 +40,9 @@ export class PostListComponent implements OnInit{
         this.isLoading = false;
       }
     })
+  }
+  viewPostDetail(postId: number): void {
+    this.router.navigate(['/posts', postId]);
   }
 
 }

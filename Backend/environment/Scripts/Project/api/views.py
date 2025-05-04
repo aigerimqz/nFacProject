@@ -46,6 +46,7 @@ class CreatePostView(generics.CreateAPIView):
 class PostDetailView(generics.RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    authentication_classes = []
     permission_classes = [permissions.AllowAny]
 
 
