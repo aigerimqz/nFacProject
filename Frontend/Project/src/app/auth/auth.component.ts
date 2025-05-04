@@ -19,7 +19,7 @@ export class AuthComponent {
 
   constructor(
     private authService: AuthService,
-    // private router: Router,
+    private router: Router,
     // private route: ActivatedRoute
   ){
     this.userModel = {} as User;
@@ -31,6 +31,7 @@ export class AuthComponent {
       next: (token) => {
         localStorage.setItem('access', token.access);
         localStorage.setItem('refresh', token.refresh);
+        this.router.navigate(['/profile']);
       
       },
       error: () => {
