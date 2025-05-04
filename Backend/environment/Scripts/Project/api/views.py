@@ -73,3 +73,10 @@ class UserProfileView(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
     
+class UserPostsView(generics.ListAPIView):
+    serializer_class = PostSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        return Post.objects.filter(author__username = username).order_by('-created_at')
