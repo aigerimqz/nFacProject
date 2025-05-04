@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,10 @@ import { RouterModule } from '@angular/router';
 export class ProfileComponent implements OnInit{
   profileData: any;
 
-  constructor(private userService: UserService){}
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
       this.userService.getProfile().subscribe({
@@ -25,6 +28,10 @@ export class ProfileComponent implements OnInit{
           console.error('Error on loading profile: ', err);
         }
       })
+  }
+
+  viewPostDetail(postId: number): void {
+    this.router.navigate(['/posts', postId]);
   }
 
 }

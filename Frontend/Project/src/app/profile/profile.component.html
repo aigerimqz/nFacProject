@@ -20,7 +20,7 @@
     <section id="posts">
         <div class="myposts">
             <div class="nopost" *ngIf="profileData?.posts?.length === 0">You don't have any posts yet.</div>
-            <div class="post__cards" *ngFor="let post of profileData.posts">
+            <div (click) = "viewPostDetail(post.id)" class="post__cards" *ngFor="let post of profileData.posts">
                 <h4>{{post.text}}</h4>
                 <img [src]="post.image" alt="">
 

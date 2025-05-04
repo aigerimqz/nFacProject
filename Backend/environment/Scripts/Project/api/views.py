@@ -13,6 +13,7 @@ class PostListView(generics.ListAPIView):
     serializer_class = PostSerializer
 
 
+
 # Create your views here.
 @permission_classes([IsAuthenticated])
 class CreatePostView(generics.CreateAPIView):

@@ -1,1 +1,20 @@
-<p>post-detail works!</p>
+<div class="container">
+    <div *ngIf="isLoading" class="loading">Loading post...</div>
+    
+    <div *ngIf="error" class="error">{{ error }}</div>
+  
+    <div *ngIf="post" class="post-detail">
+      <div class="post-header">
+        <h2>Post Details</h2>
+        <!-- <span class="author">{{ post.}}</span>
+        <span class="date">{{ post.created_at | date:'medium' }}</span> -->
+      </div>
+      
+      <div class="post-content">
+        <p>{{ post.text }}</p>
+        <img *ngIf="post.image" [src]="post.image" alt="Post image" class="post-image">
+      </div>
+      <button>Edit post</button>
+      <button routerLink="/profile" class="back-button">Back to All Posts</button>
+    </div>
+  </div>
