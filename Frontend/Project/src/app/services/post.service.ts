@@ -19,4 +19,8 @@ export class PostService {
     
     return this.http.post(`${this.apiUrl}create/`, formData);
   }
+
+  updatePost(id: number, postData: FormData): Observable<Post> {
+    return this.http.put<Post>(`${this.apiUrl}${id}/update/`, postData);
+  }
 }

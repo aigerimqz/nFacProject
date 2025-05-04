@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +19,8 @@ export class PostDetailComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -46,6 +47,10 @@ export class PostDetailComponent implements OnInit{
         console.error(err);
       }
     })
+  }
+
+  updatePost(): void{
+    this.router.navigate(['/posts', this.post.id, 'update']);
   }
 
 }

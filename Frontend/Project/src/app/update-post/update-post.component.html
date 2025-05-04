@@ -1,0 +1,28 @@
+<div class="container">
+    <section id="update-post">
+      <h2>Edit Post</h2>
+      
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading" enctype="multipart/form-data">
+        <div class="text__block">
+          <label for="text">Text:</label>
+          <textarea formControlName="text" id="text"></textarea>
+        </div>
+        
+        <div class="image__block">
+          <label>Current Image:</label>
+          <img *ngIf="currentImageUrl" [src]="currentImageUrl" class="current-image">
+          <p *ngIf="!currentImageUrl">No image uploaded</p>
+          
+          <label for="image">Update Image:</label>
+          <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit" class="btn-update">Update Post</button>
+          <button type="button" routerLink="/profile" class="btn-cancel">Cancel</button>
+        </div>
+      </form>
+      
+      <div *ngIf="isLoading" class="loading">Loading post data...</div>
+    </section>
+  </div>
