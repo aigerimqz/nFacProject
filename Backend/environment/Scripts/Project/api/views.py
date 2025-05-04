@@ -18,15 +18,17 @@ class RegisterView(generics.CreateAPIView):
 class PostListView(generics.ListAPIView):
     queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 
 # Create your views here.
-@permission_classes([IsAuthenticated])
+
 class CreatePostView(generics.CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [permissions.IsAuthenticated]
   
     def perform_create(self, serializer):
         serializer.save(author = self.request.user)
@@ -38,10 +40,11 @@ class PostDetailView(generics.RetrieveAPIView):
 
 
 
-@permission_classes([IsAuthenticated])
+
 class UpdatePostView(generics.UpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
     
     def perform_update(self, serializer):
         if self.get_object().author != self.request.user:
@@ -49,10 +52,11 @@ class UpdatePostView(generics.UpdateAPIView):
         serializer.save()
 
 
-@permission_classes([IsAuthenticated])
+
 class DeletePostView(generics.DestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def perform_destroy(self, instance):
         if instance.author != self.request.user:
@@ -60,10 +64,11 @@ class DeletePostView(generics.DestroyAPIView):
         instance.delete()
 
 
-@permission_classes([IsAuthenticated])
+
 class UserProfileView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user

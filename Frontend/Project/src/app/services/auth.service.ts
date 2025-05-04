@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://127.0.0.1:8000/api/';
 
   constructor(private client: HttpClient) { }
 
@@ -39,4 +40,17 @@ export class AuthService {
   logout(){
     localStorage.removeItem('token');
   }
+
+
+  register(username: string, email: string, password: string, first_name: string, last_name: string): Observable<any> {
+    return this.client.post(`${this.apiUrl}register/`, {
+      username,
+      email,
+      password,
+      password2: password,
+      first_name,
+      last_name
+    });
+  }
+  
 }
