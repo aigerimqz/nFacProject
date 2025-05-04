@@ -1,1 +1,21 @@
-<p>create-post works!</p>
+<div class="container">
+    <section id="create-post">
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="text__block">
+                <label for="text">Text:</label>
+                <textarea formControlName="text" id="text"></textarea>
+            </div>
+            <div class="image__block">
+                <label for="image">Image</label>
+                <input 
+                    type="file" 
+                    id="image"
+                    (change)="onFileSelected($event)"
+                    accept="image/*"
+                />
+            </div>
+
+            <button type="submit">Create Post</button>
+        </form>
+    </section>
+</div>

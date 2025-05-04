@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css'
 })
@@ -17,34 +18,47 @@ export class CreatePostComponent {
 
   constructor(
     private fb: FormBuilder,
-    private client: HttpClient,
+    private postService: PostService,
     private router: Router
-  ){
+  ) {
     this.postForm = this.fb.group({
       text: [''],
       image: [null]
-    })
+    });
   }
 
-  onFileSelected(event: any){
-    this.selectedFile = event.target.files[0];
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length) {
+      this.selectedFile = event.target.files[0];
+      this.postForm.patchValue({
+        image: this.selectedFile
+      });
+    }
   }
 
-  onSubmit(){
+  onSubmit() {
+    if (this.postForm.invalid) {
+      return;
+    }
+  
     const formData = new FormData();
     formData.append('text', this.postForm.get('text')?.value);
-    if(this.selectedFile){
-      formData.append('image', this.selectedFile);
+    
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile, this.selectedFile.name);
     }
-
-    this.client.post('http://127.0.0.1:8000/api/posts/create/', formData).subscribe({
+  
+    this.postService.createPost(formData).subscribe({
       next: () => {
         this.router.navigate(['/profile']);
       },
       error: err => {
-        console.error("Error on creating new post: ", err);
+        console.error("Error creating post: ", err);
+      
+        if (err.error) {
+          console.log("Server validation errors:", err.error);
+        }
       }
-    })
+    });
   }
-
 }
