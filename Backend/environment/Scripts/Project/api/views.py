@@ -5,8 +5,15 @@ from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from .models import Post
-from .serializers import PostSerializer, UserSerializer
+from .serializers import PostSerializer, UserSerializer, RegisterSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
+
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+    permission_classes = [permissions.AllowAny]
+
 
 class PostListView(generics.ListAPIView):
     queryset = Post.objects.all().order_by('-created_at')
@@ -60,3 +67,4 @@ class UserProfileView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+    

@@ -3,6 +3,7 @@ from .views import *
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
+    path('register/', RegisterView.as_view(), name='register'),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('posts/', PostListView.as_view(), name='post-list'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('posts/<int:pk>/update/', UpdatePostView.as_view(), name='post-update'),
     path('posts/<int:pk>/delete/', DeletePostView.as_view(), name='post-delete'),
     path('profile/', UserProfileView.as_view(), name='user-profile'),
+
 ]
