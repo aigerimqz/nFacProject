@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../../models';
 import { PostService } from '../services/post.service';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,10 @@ import { Router } from '@angular/router';
   styleUrl: './post-list.component.css'
 })
 export class PostListComponent implements OnInit{
-  posts: Post[] = [];
+  @Input() posts: Post[] = [];
+
+  // posts: Post[] = [];
+  profileData: any;
   isLoading = true;
 
 
@@ -26,6 +29,7 @@ export class PostListComponent implements OnInit{
 
   ngOnInit(): void {
       this.loadPosts();
+      this.loadProfile();
   }
   loadPosts():void {
     this.isLoading = true;
@@ -41,6 +45,18 @@ export class PostListComponent implements OnInit{
       }
     })
   }
+  loadProfile():void {
+    this.userService.getProfile().subscribe({
+      next: (data) => {
+        this.profileData = data;
+        
+        
+      },
+      error: (err) => {
+        console.error('Error on loading profile: ', err);
+      }
+    })
+  }
 
   viewUserDetail(username: string): void {
     this.router.navigate(['/users', username]);
@@ -49,5 +65,6 @@ export class PostListComponent implements OnInit{
   viewPostDetail(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
+  
 
 }

@@ -13,12 +13,20 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
+
+class ProfileView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.AllowAny]
+    authentication_classes = []
+
 
 class ProfileUpdateView(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
     def get_object(self):
         return self.request.user.profile

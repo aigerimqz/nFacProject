@@ -14,7 +14,9 @@ export class UserService {
     return this.client.get<any>(this.profileUrl);
   }
 
-  // updateProfile(data: FormData): Observable<any>
+  updateProfile(data: FormData): Observable<any> {
+    return this.client.put('http://127.0.0.1:8000/api/profile/update/', data);
+  }
 
   getUserById(id: number): Observable<any> {
     return this.client.get<any>(`http://127.0.0.1:8000/api/users/${id}/`);

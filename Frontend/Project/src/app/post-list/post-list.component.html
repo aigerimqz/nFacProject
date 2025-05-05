@@ -7,7 +7,8 @@
       <div class="post_block">
         <div class="post__author">
           
-          <h2 (click)="viewUserDetail(post.author.username)"><img class="profile__icon" src="icons/user.png" alt="">{{'@' + post.author.username}}</h2>
+          <h2 (click)="viewUserDetail(post.author.username)">
+            <img class="profile__icon" [src]="post.author.profile_photo || 'icons/user.png'" alt="">{{'@' + post.author.username}}</h2>
         </div>
         <div (click)="viewPostDetail(post.id)"  class="post__content">
           <div *ngIf="post.image" class="post__image" [ngStyle]="{'background-image': 'url(' + post.image + ')'}">

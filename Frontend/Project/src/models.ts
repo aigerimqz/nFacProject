@@ -3,7 +3,8 @@ export interface User {
     username: string;
     email?: string;
     password: string;
-    bio?: string;
+    profile: Profile;
+    profile_photo?: string;
 }
 
 export interface Post{
@@ -16,4 +17,9 @@ export interface Post{
 export interface Token{
     refresh: string;
     access: string;
+}
+
+export interface Profile{
+    bio?: string;
+    profile_photo?: string;
 }

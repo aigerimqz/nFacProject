@@ -15,6 +15,10 @@ export class PostService {
     return this.client.get<Post[]>(this.apiUrl);
   }
 
+  getPostsByUser(username: string):Observable<Post[]> {
+    return this.client.get<Post[]>(`http://127.0.0.1:8000/api/users/${username}/posts/`)
+  }
+
   getPost(id: number): Observable<Post>{
     return this.client.get<Post>(`${this.apiUrl}${id}/`);
   }

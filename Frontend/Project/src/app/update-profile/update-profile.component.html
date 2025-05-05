@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div>
+      <label>Bio</label>
+      <textarea [(ngModel)]="bio" name="bio" rows="4" cols="40"></textarea>
+    </div>
+  
+    <div>
+      <label>Profile Photo</label>
+      <input type="file" (change)="onFileSelected($event)" />
+      <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" height="100" />
+    </div>
+  
+    <button type="submit">Update Profile</button>
+  </form>
+  

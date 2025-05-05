@@ -4,9 +4,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
 class UserShortSerializer(serializers.ModelSerializer):
+    profile_photo = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'profile_photo']
+
+    def get_profile_photo(self, obj):
+        if hasattr(obj, 'profile') and obj.profile.profile_photo:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.profile.profile_photo.url)
+        return None
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserShortSerializer(read_only=True)
@@ -59,4 +68,5 @@ class RegisterSerializer(serializers.ModelSerializer):
             email=validated_data.get('email', ''),
             password=validated_data['password']
         )
+        Profile.objects.create(user=user)
         return user
