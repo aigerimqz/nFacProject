@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { PostService } from '../services/post.service';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
@@ -22,7 +22,8 @@ export class CreatePostComponent {
     private fb: FormBuilder,
     private postService: PostService,
     private router: Router, 
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) {
     this.postForm = this.fb.group({
       text: [''],
@@ -65,5 +66,9 @@ export class CreatePostComponent {
         }
       }
     });
+  }
+
+  goBack(){
+    this.location.back();
   }
 }

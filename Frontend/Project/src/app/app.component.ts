@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
@@ -10,4 +11,10 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Project';
+  constructor(
+    public location: Location
+  ){}
+  goBack(){
+    this.location.back();
+  }
 }

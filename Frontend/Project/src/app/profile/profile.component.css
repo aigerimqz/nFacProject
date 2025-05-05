@@ -1,29 +1,132 @@
+
 .container {
-    max-width: 720px;
+    max-width: 600px;
     margin: 0 auto;
-}
-.profile__block {
+    padding: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  #profile {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .profile__block {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
-}
-.profile__info {
+    gap: 20px;
+  }
+  
+  .profile__info {
     display: flex;
-    justify-content: space-between;
-}
-.profile__img {
-}
-.profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-}
-.profile__text {
-    margin-left: 50px;
-}
-.profile__edit {
-}
-.new__post {
-}
-.post__list {
-}
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .profile__img img.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e2d4f0;
+  }
+  
+  .profile__text h2 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .profile__text h2:first-child {
+    color: #6a5acd;
+    font-weight: 600;
+  }
+  
+  .profile__text p {
+    margin: 8px 0 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .profile__edit, .new__post {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .edit__btn, .post__btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .edit__btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .post__btn {
+    background-color: #9896f1;
+    color: white;
+    margin-left: 10px;
+  }
+  
+  .edit__btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .post__btn:hover {
+    background-color: #8684e0;
+  }
+  
+
+  #posts {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .nopost {
+    text-align: center;
+    color: #967bb6;
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  .post__cards {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .post__cards:hover {
+    transform: translateY(-2px);
+  }
+  
+  .post__cards h4 {
+    color: #333;
+    margin: 0 0 12px 0;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  
+  .post__cards img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+  

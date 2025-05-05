@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,9 @@ export class UpdateProfileComponent {
   selectedFile: File | null = null;
   previewUrl: string | ArrayBuffer | null = null;
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService,
+    private location: Location
+  ){}
 
   onFileSelected(event: any){
     const file = event.target.files[0];
@@ -39,6 +41,10 @@ export class UpdateProfileComponent {
       next: res => alert('Profile updated!'),
       error: err => console.error(err)
     })
+  }
+ 
+  goBack(){
+    this.location.back();
   }
 
 }

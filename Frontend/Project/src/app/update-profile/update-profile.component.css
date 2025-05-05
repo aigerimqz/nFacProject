@@ -1,0 +1,92 @@
+.form__title{
+    text-align: center;
+    font-size: 24px;
+}
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+  }
+  
+  form div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  textarea {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s ease;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-color: #9896f1;
+  }
+  
+  input[type="file"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    cursor: pointer;
+  }
+  
+  input[type="file"]:hover {
+    border-color: #9896f1;
+  }
+  
+  img[alt="Preview"] {
+    display: block;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+  }
+  
+  button {
+    background-color: #9896f1;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .goback{
+    margin-right: 20px;
+  }
+  button:hover {
+    background-color: #8684e0;
+  }
+  button:not([type="submit"]) {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  button:not([type="submit"]):hover {
+    background-color: #e0e0e0;
+  }
+  
