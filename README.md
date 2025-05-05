@@ -48,7 +48,7 @@ The theme of the project is **personal expression and identity**. The goal is to
 
 **Frontend (Angular)**
 
-* Angular 17
+* Angular 19
 * TypeScript
 * Angular Router
 * RxJS for reactive programming
@@ -56,7 +56,7 @@ The theme of the project is **personal expression and identity**. The goal is to
 
 **Backend (Django + DRF)**
 
-* Django 4.x
+* Django 
 * Django REST Framework
 * Simple JWT for token-based authentication
 * SQLite (dev) / PostgreSQL (prod)
