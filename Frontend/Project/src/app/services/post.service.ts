@@ -7,7 +7,7 @@ import { Post } from '../../models';
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'http://127.0.0.1:8000/api/posts/';  
+  private apiUrl = 'https://nfacproject.onrender.com/api/posts/';  
 
   constructor(private client: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class PostService {
   }
 
   getPostsByUser(username: string):Observable<Post[]> {
-    return this.client.get<Post[]>(`http://127.0.0.1:8000/api/users/${username}/posts/`)
+    return this.client.get<Post[]>(`https://nfacproject.onrender.com/api/users/${username}/posts/`)
   }
 
   getPost(id: number): Observable<Post>{

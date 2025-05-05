@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private profileUrl = 'http://127.0.0.1:8000/api/profile/';
+  private profileUrl = 'https://nfacproject.onrender.com/api/profile/';
 
   constructor(private client: HttpClient) { }
 
@@ -15,14 +15,14 @@ export class UserService {
   }
 
   updateProfile(data: FormData): Observable<any> {
-    return this.client.put('http://127.0.0.1:8000/api/profile/update/', data);
+    return this.client.put('https://nfacproject.onrender.com/api/profile/update/', data);
   }
 
   getUserById(id: number): Observable<any> {
-    return this.client.get<any>(`http://127.0.0.1:8000/api/users/${id}/`);
+    return this.client.get<any>(`https://nfacproject.onrender.com/api/users/${id}/`);
   }
   
   getUserByUsername(username: string): Observable<any> {
-    return this.client.get<any>(`http://127.0.0.1:8000/api/users/${username}/`);
+    return this.client.get<any>(`https://nfacproject.onrender.com/api/users/${username}/`);
   }
 }
