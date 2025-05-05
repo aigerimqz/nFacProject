@@ -1,0 +1,105 @@
+/* Update Post Form Styles */
+#update-post {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+  }
+  
+  #update-post h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .text__block,
+  .image__block {
+    margin-bottom: 24px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  textarea {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s ease;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-color: #9896f1;
+    box-shadow: 0 0 0 2px rgba(152, 150, 241, 0.2);
+  }
+  
+  .current-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 16px;
+    display: block;
+  }
+  
+  .image__block p {
+    color: #999;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  
+  .image__block input[type="file"] {
+    width: 80%;
+    padding: 12px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .image__block input[type="file"]:hover {
+    border-color: #9896f1;
+    background-color: #f8f7ff;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+  }
+  
+  .btn-update {
+    background-color: #9896f1;
+    color: white;
+  }
+  
+  .btn-update:hover {
+    background-color: #8684e0;
+  }
+  

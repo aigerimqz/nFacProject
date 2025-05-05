@@ -8,8 +8,11 @@
             <button routerLink="/profile" class="btn btn__profile"><img src="icons/profile.png" alt=""></button>
             <button class="btn btn__favs"><img src="icons/fav.png" alt=""></button>
           </div>
-          <div class="btns__login">
+          <div *ngIf="!isLoggedIn" class="btns__login">
             <button routerLink="/login" class="btn btn__logout"><img src="icons/login.png" alt=""></button>
+          </div>
+          <div *ngIf="isLoggedIn" class="btns__logout">
+            <button (click)="logout()" class="btn btn__logout"><img src="icons/logout.png" alt=""></button>
           </div>
           
       </div>

@@ -79,6 +79,7 @@
 .post__info p {
   background-color: white;
   padding: 15px;
+  text-align: justify;
 }
 
 .created__date {

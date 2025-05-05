@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../services/post.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-post',
@@ -22,7 +22,8 @@ export class UpdatePostComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.updateForm = this.fb.group({
       text: [''],
@@ -91,5 +92,8 @@ export class UpdatePostComponent implements OnInit {
         }
       }
     });
+  }
+  goBack(){
+    this.location.back();
   }
 }

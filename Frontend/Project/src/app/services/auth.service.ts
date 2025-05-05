@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, Token } from '../../models';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api/';
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  public isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   constructor(private client: HttpClient) { }
 
@@ -17,6 +19,7 @@ export class AuthService {
       this.client.post<Token>('http://127.0.0.1:8000/api/login/', userModel).subscribe({
         next: (token) => {
           localStorage.setItem('token', token.access);
+          this.isLoggedInSubject.next(true); 
           observer.next(token);
           observer.complete();
         },
@@ -39,6 +42,11 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    this.isLoggedInSubject.next(false); 
+  }
+
+  checkLoginStatus(): boolean{
+    return !!localStorage.getItem('token');
   }
 
 

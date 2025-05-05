@@ -19,13 +19,24 @@
         </div>
     </section>
     <section id="posts">
-        <div class="myposts">
-            <div class="nopost" *ngIf="profileData?.posts?.length === 0">You don't have any posts yet.</div>
-            <div (click) = "viewPostDetail(post.id)" class="post__cards" *ngFor="let post of profileData.posts">
-                <h4>{{post.text}}</h4>
-                <img [src]="post.image" alt="">
-
+        <div (click)="viewPostDetail(post.id)" class="post" *ngFor="let post of profileData.posts">
+            <div class="post__top">
+                <p class="post-text">{{ post.text }}</p>
+              <div class="post-image-container" *ngIf="post.image">
+                <img [src]="post.image" 
+                    alt="Post image"
+                    >
+              </div>
             </div>
-        </div>
+            <div class="post__bottom">
+              <div class="post__icons">
+                <a class="post__link" ><img class="icon like__icon" src="icons/like.png" alt=""></a>
+                <a class="post__link" ><img class="icon comment__icon" src="icons/comment.png" alt=""></a>
+              </div>
+              <p class="created__date">{{post.created_at | date: 'MMM d, y, h:mm a' }}</p>
+      
+      
+            </div>
+          </div>
     </section>
 </div>
