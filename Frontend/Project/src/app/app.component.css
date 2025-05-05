@@ -1,3 +1,8 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 .outer-container{
     max-width: 96%;
     margin: 25px auto;
@@ -11,10 +16,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0;
+}
+#header a{
+    text-decoration: none;
 }
 .header__text {
-    font-size: 36px;
+    font-size: 38px;
+    text-decoration: none;
+    color: #6a5acd;
+    font-weight: 700;
+    font-family: 'Sour Gummy', sans-serif;
 }
 .menu {
     position: fixed;
@@ -22,7 +34,7 @@
     height: 640px;
     padding: 20px 10px;
     border: 1px solid #999999;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
