@@ -1,31 +1,42 @@
 <div class="container">
-    <div *ngIf="isLoading" class="loading-spinner">
-      Loading...
-    </div>
-  
-    <div class="post__list" *ngFor="let post of posts">
-      <div class="post_block">
-        <div class="post__author">
-          
-          <h2 (click)="viewUserDetail(post.author.username)">
-            <img class="profile__icon" [src]="post.author.profile_photo || 'icons/user.png'" alt="">{{'@' + post.author.username}}</h2>
+  <div *ngIf="isLoading" class="loading-spinner">
+    Loading...
+  </div>
+
+  <div class="post__list" *ngFor="let post of posts">
+    <div class="post_block">
+      <div class="post__author">
+        <img class="profile__icon" [src]="post.author.profile_photo || 'icons/user.png'" alt="">
+        
+        <div class="user__info">
+          <h2 (click)="viewUserDetail(post.author.username)">{{'@' + post.author.username}}</h2>
+          <p>{{post.author.first_name}} {{post.author.last_name}}</p>
         </div>
-        <div (click)="viewPostDetail(post.id)"  class="post__content">
-          <div *ngIf="post.image" class="post__image" [ngStyle]="{'background-image': 'url(' + post.image + ')'}">
-            <!-- <img [src]="post.image" alt=""> -->
+    
+      </div>
+      <div (click)="viewPostDetail(post.id)" class="post__content">
+        <div *ngIf="post.image" class="post__image" [ngStyle]="{'background-image': 'url(' + post.image + ')'}">
+          <!-- <img [src]="post.image" alt=""> -->
+        </div>
+        <div class="post__info">
+          <p>{{post.text}}</p>
+        </div>
+        <div class="post__bottom">
+          <div class="post__icons">
+            <a class="post__link" ><img class="icon like__icon" src="icons/like.png" alt=""></a>
+            <a class="post__link" ><img class="icon comment__icon" src="icons/comment.png" alt=""></a>
           </div>
-          <div class="post__info">
-            <p>{{post.text}}</p>
-          </div>
+          <p class="created__date">{{post.created_at | date: 'MMM d, y, h:mm a' }}</p>
 
         </div>
-        
       </div>
-       
-  
+
     </div>
-  
-    <div *ngIf="!isLoading && posts.length === 0" class="no-posts">
-      No posts available
-    </div>
+
+
   </div>
+
+  <div *ngIf="!isLoading && posts.length === 0" class="no-posts">
+    No posts available
+  </div>
+</div>

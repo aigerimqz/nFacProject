@@ -8,7 +8,7 @@ class UserShortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'profile_photo']
+        fields = ['id', 'username', 'profile_photo', 'first_name', 'last_name']
 
     def get_profile_photo(self, obj):
         if hasattr(obj, 'profile') and obj.profile.profile_photo:

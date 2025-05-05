@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../services/post.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -23,7 +23,8 @@ export class PostDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private postService: PostService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ){}
 
   ngOnInit(): void {
@@ -77,6 +78,10 @@ export class PostDetailComponent implements OnInit{
         }
       })
     }
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }

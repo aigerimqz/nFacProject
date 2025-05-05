@@ -5,6 +5,8 @@ export interface User {
     password: string;
     profile: Profile;
     profile_photo?: string;
+    first_name: string;
+    last_name: string;
 }
 
 export interface Post{
@@ -12,6 +14,7 @@ export interface Post{
     text: string;
     image: string;
     author: User;
+    created_at: string;
 }
 
 export interface Token{

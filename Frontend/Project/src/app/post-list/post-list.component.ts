@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
   styleUrl: './post-list.component.css'
 })
 export class PostListComponent implements OnInit{
-  @Input() posts: Post[] = [];
+  
 
-  // posts: Post[] = [];
+  posts: Post[] = [];
   profileData: any;
   isLoading = true;
 
