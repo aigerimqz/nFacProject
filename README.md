@@ -68,8 +68,8 @@ The theme of the project is **personal expression and identity**. The goal is to
 ### Backend
 
 ```bash
-git clone https://github.com/yourusername/bailanysta.git
-cd bailanysta/backend
+git clone https://github.com/aigerimqz/nFacProject.git
+cd nFacProject/Backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -80,7 +80,7 @@ python manage.py runserver
 ### Frontend
 
 ```bash
-cd bailanysta/frontend
+cd nFacProject/Frontend
 npm install
 ng serve
 ```
