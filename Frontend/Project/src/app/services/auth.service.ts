@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, Token } from '../../models';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -50,15 +50,20 @@ export class AuthService {
   }
 
 
-  register(username: string, email: string, password: string, first_name: string, last_name: string): Observable<any> {
-    return this.client.post(`${this.apiUrl}register/`, {
-      username,
-      email,
-      password,
-      password2: password,
-      first_name,
-      last_name
-    });
+  register(userData: any): Observable<any> {
+    return this.client.post(`${this.apiUrl}register/`, userData).pipe(
+      map(response => {
+  
+        return response;
+      }),
+      catchError(error => {
+       
+        if (error.status === 201) {
+          return of(error.error); 
+        }
+        return throwError(() => error);
+      })
+    );
   }
   
 }
