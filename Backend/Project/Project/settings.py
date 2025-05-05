@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+@q4p==_5-+(9*1%mz+yp(z$j%=&6mv1+tf960uu%$%w2!avj)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://nfacproject.onrender.com",
+    "nfacproject.onrender.com",
     "127.0.0.1"
 ]
 
