@@ -9,7 +9,7 @@ import { PostListComponent } from "../post-list/post-list.component";
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [CommonModule, PostListComponent],
+  imports: [CommonModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
@@ -32,14 +32,18 @@ export class UserDetailComponent implements OnInit{
         this.userService.getUserByUsername(username).subscribe({
           next: (data) => {
             this.userData = data;
+            if(this.userData.posts && Array.isArray(this.userData.posts)){
+              this.userData.posts = this.userData.posts.sort((a: any, b:any) => {
+                return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+              })
+            }
           },
           error: (err) => {
             console.error('Error loading user profile: ', err);
           }
         })
-        this.postService.getPostsByUser(username).subscribe(posts => {
-          this.userPosts = posts;
-        })
+        
+        
       }
   }
 

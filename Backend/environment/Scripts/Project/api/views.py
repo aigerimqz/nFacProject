@@ -122,4 +122,4 @@ class UserPostsView(generics.ListAPIView):
 
     def get_queryset(self):
         username = self.kwargs['username']
-        return Post.objects.filter(author__username = username).order_by('-created_at')
+        return Post.objects.filter(author__username = username)

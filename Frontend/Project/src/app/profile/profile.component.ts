@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit{
       this.userService.getProfile().subscribe({
         next: (data) => {
           this.profileData = data;
+          this.profileData.posts.sort((a: any, b: any) => {
+            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+          });
+          
           
           
         },
