@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Post, Profile
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
@@ -17,11 +17,17 @@ class PostSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ['author']
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_photo']
+
 class UserSerializer(serializers.ModelSerializer):
     posts = PostSerializer(many=True)
+    profile = ProfileSerializer()
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'posts']
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'posts', 'profile']
 
 
 

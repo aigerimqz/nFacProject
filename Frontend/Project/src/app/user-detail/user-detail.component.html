@@ -1,12 +1,22 @@
 <div class="container">
     <div *ngIf="userData">
-        <h2>{{'@' + userData.username }}</h2>
-        <p>{{ userData.first_name }} {{ userData.last_name }}</p>
-        <div *ngIf="userData.posts?.length === 0">No posts yet</div>
-        <div *ngFor="let post of userData.posts">
-          <h4>{{ post.text }}</h4>
-          <img [src]="post.image" alt="">
+      <div class="user__profile">
+        <div class="user__photo">
+          <img src="icons/user.png" alt="">
         </div>
+        <div class="user__info">
+          <h2>{{'@' + userData.username }}</h2>
+          <p>{{ userData.first_name }} {{ userData.last_name }}</p>
+          <p>{{userData.bio}}</p>
+        </div>
+        
       </div>
+        
+      <div *ngIf="userData.posts?.length === 0">No posts yet</div>
+      <div *ngFor="let post of userData.posts">
+        <h4>{{ post.text }}</h4>
+        <img [src]="post.image" alt="">
+      </div>
+    </div>
       
 </div>

@@ -4,8 +4,8 @@ from rest_framework import generics, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
-from .models import Post
-from .serializers import PostSerializer, UserSerializer, RegisterSerializer
+from .models import Post, Profile
+from .serializers import PostSerializer, UserSerializer, RegisterSerializer, ProfileSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 
 
@@ -14,6 +14,14 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
 
+class ProfileUpdateView(generics.RetrieveUpdateDestroyAPIView):
+
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.profile
 
 class PostListView(generics.ListAPIView):
    
