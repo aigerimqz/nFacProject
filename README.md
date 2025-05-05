@@ -2,7 +2,15 @@
 
 **Bailanysta** is a personal blog-style web application developed for user profile display and content sharing. Users can register, log in, and manage their profiles. They can create and view their own posts, which are automatically sorted by date. This project was built as part of a full-stack web development course and demonstrates the integration of modern frontend and backend technologies.
 
----
+---  
+
+## 🚀 Live Demo  
+* **Frontend(Angular)**: [Visit Frontend](https://n-fac-project.vercel.app/)  
+  The Frontend built with Angular and deployed using **Vercel**.
+* **Backend(Django)**: [Go To Backend](https://nfacproject.onrender.com)  
+  The Backend developed with Django and deployed via **Render**.
+  
+---  
 
 ## 🌐 Theme
 
