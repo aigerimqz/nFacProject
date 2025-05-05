@@ -14,14 +14,28 @@ export class AuthService {
 
   constructor(private client: HttpClient) { }
 
+  fetchCurrentUser(): Observable<User> {
+    return this.client.get<User>(`${this.apiUrl}profile/`);
+  }
+  
+
   login(userModel: User): Observable<Token>{
     return new Observable(observer => {
       this.client.post<Token>('http://127.0.0.1:8000/api/login/', userModel).subscribe({
         next: (token) => {
           localStorage.setItem('token', token.access);
           this.isLoggedInSubject.next(true); 
-          observer.next(token);
-          observer.complete();
+
+
+          this.fetchCurrentUser().subscribe({
+            next: (user) => {
+              localStorage.setItem('currentUser', JSON.stringify(user));
+              observer.next(token);
+              observer.complete();
+            },
+            error: err => observer.error(err)
+          })
+          
         },
         error: err => observer.error(err)
       })

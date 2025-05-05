@@ -32,10 +32,10 @@ export class PostDetailComponent implements OnInit{
       this.currentUser = this.authService.getCurrentUser();
       
   }
-
-  isAuthor(): boolean{
-    return this.post && this.post.author.id === this.currentUser.id;
+  isAuthor(): boolean {
+    return !!this.post?.author?.id && !!this.currentUser?.id && this.post.author.id === this.currentUser.id;
   }
+  
 
   getPost(): void{
     const id = this.route.snapshot.paramMap.get('id');

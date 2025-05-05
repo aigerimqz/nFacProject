@@ -14,11 +14,11 @@
         <p>{{ post.text }}</p>
         <img *ngIf="post.image" [src]="post.image" alt="Post image" class="post-image">
       </div>
-      <div *ngIf="isAuthor()" class="only__user" >
+      <div *ngIf="!isLoading && post.author.id === currentUser.id" class="only__user" >
         <button (click)="updatePost()">Edit post</button>
         <button (click)="deletePost()" >Delete post</button>
       </div>
       
-      <button routerLink="/profile" class="back-button">Back to All Posts</button>
+      <button (click)="goBack()" class="back-button">Back to All Posts</button>
     </div>
   </div>
